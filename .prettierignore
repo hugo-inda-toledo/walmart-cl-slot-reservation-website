@@ -1,0 +1,4 @@
+coverage/
+contract/openapi.yml
+dist/
+node_modules/

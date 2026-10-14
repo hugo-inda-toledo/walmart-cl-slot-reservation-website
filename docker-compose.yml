@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    image: walmart-cl-slot-reservation-website:local
+    environment:
+      API_UPSTREAM: ${API_UPSTREAM:-http://host.docker.internal:8080}
+    ports:
+      - "${WEB_PORT:-8081}:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test:
+        ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1"]
